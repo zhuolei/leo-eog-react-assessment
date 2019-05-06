@@ -8,6 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
 import NowWhat from "./components/NowWhat";
+import Map from "./components/Map";
+import Chart from "./components/Chart"
+import 'mapbox-gl/dist/mapbox-gl.css';
+import {HashRouter, Switch, Route} from 'react-router-dom';
 
 const store = createStore();
 const theme = createMuiTheme({
@@ -31,11 +35,17 @@ const App = props => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <Provider store={store}>
-      <Wrapper>
-        <Header />
-        <NowWhat />
-        <ToastContainer />
-      </Wrapper>
+      <HashRouter>
+        <Wrapper>
+          <Header />
+          <Switch>
+            <Route path="/map" component = {Map}/>
+            <Route path="/chart" component = {Chart}/>
+            <Route component={NowWhat} />
+          </Switch>
+          <ToastContainer />
+        </Wrapper>
+      </HashRouter>
     </Provider>
   </MuiThemeProvider>
 );

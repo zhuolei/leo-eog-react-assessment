@@ -42,6 +42,7 @@ const mapState = (state, ownProps) => {
     weather_state_name,
     temperatureinFahrenheit
   } = state.weather;
+  console.log(name)
   return {
     loading,
     name,

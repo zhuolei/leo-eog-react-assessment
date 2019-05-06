@@ -7,6 +7,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { withStyles } from "@material-ui/core/styles";
 import AvatarRaw from "@material-ui/core/Avatar";
+import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 
 const cardStyles = theme => ({
   root: {
@@ -28,11 +30,19 @@ const avatarStyles = theme => ({
 });
 const Avatar = withStyles(avatarStyles)(AvatarRaw);
 
-const styles = {
+const styles = theme => ({
   card: {
     margin: "5% 25%"
+  },
+  button: {
+    background: theme.palette.primary.main,
+    color: "white"
+  },
+  link: {
+    color: "white",
+    textDecoration: "none"
   }
-};
+});
 
 const NowWhat = props => {
   const { classes } = props;
@@ -58,6 +68,11 @@ const NowWhat = props => {
             <ListItemText primary="Submit Your App" />
           </ListItem>
         </List>
+        <Link className={classes.link} to="/map">
+        <Button variant="contained" className={classes.button}>
+        Go To The Map
+        </Button>
+        </Link>
       </CardContent>
     </Card>
   );
